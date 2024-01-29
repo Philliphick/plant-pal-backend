@@ -7,9 +7,9 @@ const waterPlant = require("../controllers/waterController");
 const deletePlant = require("../controllers/deleteController");
 
 router.get("/all", getPlants);
-router.post("/add", addPlant);
-router.put("/water", waterPlant);
-router.delete("/delete", deletePlant);
+router.post("/add/:name", addPlant);
+router.put("/water/:id", waterPlant);
+router.delete("/delete/:id", deletePlant);
 
 
 module.exports = router;
