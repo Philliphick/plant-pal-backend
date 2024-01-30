@@ -8,7 +8,7 @@ const { deletePlant } = require("../controllers/deleteController");
 const { auth } = require("../controllers/authController");
 
 router.get("/get", getPlants);
-router.put("/add/:name", addPlant);
+router.put("/add", addPlant);
 router.put("/water/:id", waterPlant);
 router.put("/delete/:id", deletePlant);
 

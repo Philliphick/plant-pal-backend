@@ -55,7 +55,8 @@ exports.addPlant = async (req, res, next) => {
     //     })
     let newPlant = {}
     try {
-        newPlant = await Plants.find({name: req.params.name})
+        console.log(req.body.name);
+        newPlant = await Plants.find({name: req.body.name})
         if (!newPlant) {
             return next(createError(404, "no plants in database with that name"))
         }
