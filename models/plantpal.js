@@ -6,8 +6,10 @@ const plantsSchema =  mongoose.Schema({
     sciName: String,
     waterFrequency: Number,
     waterAmount: String,
-    image: String
+    image: String,
+    owned: Boolean,
+    lastWateredDate: Date
 })
 
-module.exports.Plantpal = ('Plants', plantsSchema)
+module.exports = mongoose.model('Plants', plantsSchema)
 

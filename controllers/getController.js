@@ -2,7 +2,7 @@ const createError = require("http-errors");
 const axios = require("axios");
 const Plants = require("../models/plantpal");
 
-exports.getPlants = async (req, res, next) => {
+exports.getPlants = async (req, res, next) => {  
     try {
         const plants = await Plants.find({owned: true})
         res.send(plants)
