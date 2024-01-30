@@ -1,6 +1,7 @@
 const createError = require("http-errors");
 const axios = require("axios");
 const Plants = require("../models/plantpal");
+const Users = require("../models/user")
 const objId = require('mongodb').ObjectId;
 //const PlantData = require("../models/plantdata");
 
@@ -55,7 +56,6 @@ exports.addPlant = async (req, res, next) => {
     //     })
     let newPlant = {}
     try {
-        console.log(req.body.name);
         newPlant = await Plants.find({name: req.body.name})
         if (!newPlant) {
             return next(createError(404, "no plants in database with that name"))
@@ -65,8 +65,23 @@ exports.addPlant = async (req, res, next) => {
     }   
         const newPlantId = newPlant[0].id;
     try {
-        await Plants.findByIdAndUpdate(newPlantId, 
-        {owned: true})
+        // const user = await Users.findById("65b9054cc9bc2d285e117fcb");
+        // const plantArray = user.userPlants;
+        // plantArray.push(newPlantId);
+        // const userUpdated = await Users.findByIdAndUpdate("65b9054cc9bc2d285e117fcb", {
+        //     userPlants: plantArray
+        // })
+        // await userUpdated.populate("userPlants").exec();
+                // Update the user's collection with the new plant
+                await Users.findByIdAndUpdate("65b9054cc9bc2d285e117fcb", {
+                    $push: { userPlants: newPlantId }
+                });
+        
+                // Fetch the updated user document and populate the userPlants array with the details from the Plants collection
+                const updatedUser = await Users.findById("65b9054cc9bc2d285e117fcb").populate("Plants");
+                
+        // await Plants.findByIdAndUpdate(newPlantId, 
+        // {owned: true})
         res.send("updated")
     } catch (err) {
         return next(createError(500, err.message))
