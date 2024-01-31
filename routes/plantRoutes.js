@@ -7,10 +7,10 @@ const { waterPlant } = require("../controllers/waterController");
 const { deletePlant } = require("../controllers/deleteController");
 const { auth } = require("../controllers/authController");
 
-router.get("/get", getPlants);
-router.put("/add", addPlant);
-router.put("/water/:id", waterPlant);
-router.put("/delete/:id", deletePlant);
+router.get("/get/:username", getPlants);
+router.put("/add/:username", addPlant);
+router.put("/water/:username/:id", waterPlant);
+router.put("/delete/:username/:id", deletePlant);
 
 router.post("/auth", auth);
 

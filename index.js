@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const { Plantpal } = require("./models/plantpal");
+const { User } = require("./models/user");
 const { v4: uuidv4 } = require("uuid");
 const router = require("./routes/plantRoutes");
 
