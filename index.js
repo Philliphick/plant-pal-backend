@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const port = process.env.PORT || 5050;
 const mongoose = require("mongoose");
 const { Plantpal } = require("./models/plantpal");
 const { User } = require("./models/user");
@@ -19,8 +20,8 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-app.listen(5050, () => {
-    console.log("Server started on port 5050");
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
 })
 
 // Authorization middleware
