@@ -16,7 +16,6 @@ exports.getPlants = async (req, res, next) => {
         }
 
         const plants = user.userPlants.map(plantRef => plantRef.refId);
-
         for (i = 0; i < plants.length; i++) {
             plants[i].lastWateredDate = user.userPlants[i].lastWateredDate
         }
